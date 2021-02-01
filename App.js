@@ -13,6 +13,7 @@
 
 // Custom
 import newsReducer from './store/reducers/news';
+import HomeBottomTabNavigator from './navigation/MainNavigator';
 
 // Redux
 const rootReducer = combineReducers({
@@ -24,7 +25,7 @@ const store = createStore(rootReducer, composeWithDevTools(middlewareEnhancer));
  export default function App() {
   return (
     <Provider store={ store }>
-      <Text>Hello World!</Text>
+      <HomeBottomTabNavigator />
     </Provider>
   );
 }

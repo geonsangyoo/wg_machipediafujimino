@@ -6,14 +6,13 @@ const initialState = {
 };
 
 const newsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case newsActions.FETCH_NEWS:
-            return {
-                ...state,
-                news: action.news
-            };
-        default:
-            return state;
+    if (action.type === newsActions.FETCH_NEWS) {
+        return {
+            ...state,
+            news: action.news
+        };
+    } else {
+        return state;
     }
 };
 
