@@ -21,6 +21,7 @@
 		A29F6D7DF987B004DCFF8159 /* libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F731D5FEFF587D463AE33159 /* libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a */; };
 		CC779FB9F60762CE24438C99 /* libPods-wg_machipediafujimino-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D690C94847148AF704582B /* libPods-wg_machipediafujimino-tvOS.a */; };
 		D2C3002925E7037F9C25449A /* libPods-wg_machipediafujimino.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A8531F14D0D2725A171399C /* libPods-wg_machipediafujimino.a */; };
+		4B0F9F36753A4469B9532F52 /* headerLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = A4B373654A6D490390096E1A /* headerLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F731D5FEFF587D463AE33159 /* libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7811324E14F4EE188473EA0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		A4B373654A6D490390096E1A /* headerLogo.png */ = {isa = PBXFileReference; name = "headerLogo.png"; path = "../assets/images/headerLogo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				9EF2733828864291A9FE15C7 /* Octicons.ttf */,
 				71CC095877A949378BDB88B7 /* SimpleLineIcons.ttf */,
 				D582663A3D4C48D7A4EAD97F /* Zocial.ttf */,
+				A4B373654A6D490390096E1A /* headerLogo.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				9D14F65B18884F9690AABA5E /* meiryoUI.ttf in Resources */,
+				4B0F9F36753A4469B9532F52 /* headerLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

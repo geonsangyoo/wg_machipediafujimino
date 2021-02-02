@@ -1,6 +1,6 @@
 // Standard
 import React from 'react';
-import { Platform, Text } from 'react-native';
+import { Text, Platform, Image, Pressable, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -27,17 +27,61 @@ const defaultBottomTabOptions = {
         fontWeight: "bold"
     },
     activeTintColor: Colors.accentColor,
+    inactiveTintColor: Colors.noAccentColor,
 };
 
 const homeNavigator = () => {
     return (
-        <homeNavigatorScreen.Navigator>
+        <homeNavigatorScreen.Navigator
+            headerMode={ Platform.OS === "ios" ? "float" : "screen" }
+            screenOptions={{
+                headerStyle: { height: Dimensions.get("window").height * 0.12 },
+                headerTitle: () => {
+                    return (
+                        <Image
+                            source={ require("../assets/images/headerLogo.png") }
+                            style={{
+                                width: 300,
+                                height: 45,
+                            }}
+                        />
+                    );
+                },
+                headerTitleAlign: "center",
+                headerTintColor: Colors.headerIconColor,
+                headerLeft: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="refresh"
+                                size={ 18 }
+                                style={{
+                                    marginLeft: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+                headerRight: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="settings-outline"
+                                size={ 18 }
+                                style={{
+                                    marginRight: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+            }}
+        >
             <homeNavigatorScreen.Screen
                 name="home"
                 component={ HomeScreen }
-                options={{
-                    
-                }}
             />
         </homeNavigatorScreen.Navigator>
     );
@@ -45,7 +89,53 @@ const homeNavigator = () => {
 
 const freeMarketNavigator = () => {
     return (
-        <freeMarketNavigatorScreen.Navigator>
+        <freeMarketNavigatorScreen.Navigator
+            headerMode={ Platform.OS === "ios" ? "float" : "screen" }
+            screenOptions={{
+                headerStyle: { height: Dimensions.get("window").height * 0.12 },
+                headerTitle: () => {
+                    return (
+                        <Image
+                            source={ require("../assets/images/headerLogo.png") }
+                            style={{
+                                width: 300,
+                                height: 45,
+                            }}
+                        />
+                    );
+                },
+                headerTitleAlign: "center",
+                headerTintColor: Colors.headerIconColor,
+                headerLeft: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="refresh"
+                                size={ 18 }
+                                style={{
+                                    marginLeft: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+                headerRight: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="settings-outline"
+                                size={ 18 }
+                                style={{
+                                    marginRight: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+            }}
+        >
             <freeMarketNavigatorScreen.Screen
                 name="freeMarket"
                 component={ FreeMarketScreen }
@@ -56,7 +146,53 @@ const freeMarketNavigator = () => {
 
 const pointNavigator = () => {
     return (
-        <pointNavigatorScreen.Navigator>
+        <pointNavigatorScreen.Navigator
+            headerMode={ Platform.OS === "ios" ? "float" : "screen" }
+            screenOptions={{
+                headerStyle: { height: Dimensions.get("window").height * 0.12 },
+                headerTitle: () => {
+                    return (
+                        <Image
+                            source={ require("../assets/images/headerLogo.png") }
+                            style={{
+                                width: 300,
+                                height: 45,
+                            }}
+                        />
+                    );
+                },
+                headerTitleAlign: "center",
+                headerTintColor: Colors.headerIconColor,
+                headerLeft: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="refresh"
+                                size={ 18 }
+                                style={{
+                                    marginLeft: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+                headerRight: () => {
+                    return (
+                        <Pressable>
+                            <Icon
+                                name="settings-outline"
+                                size={ 18 }
+                                style={{
+                                    marginRight: 12,
+                                    color: Colors.noAccentColor,
+                                }}
+                            />
+                        </Pressable>
+                    );
+                },
+            }}
+        >
             <pointNavigatorScreen.Screen
                 name="point"
                 component={ PointScreen }
@@ -69,7 +205,8 @@ const HomeBottomTabNavigator = () => {
     return (
         <NavigationContainer>
             <menuTabNavigator.Navigator
-                tabBarOptions={ defaultBottomTabOptions }
+                tabBarOptions={{ ...defaultBottomTabOptions, style: { height: 85 } }}
+                swipeEnabled={ true }
             >
                 <menuTabNavigator.Screen
                     name="home"
@@ -83,7 +220,7 @@ const HomeBottomTabNavigator = () => {
                                     color={ tabInfo.color }
                                     size={ tabInfo.size }
                                     style={{
-                                        marginTop: 5,
+                                        marginTop: 10,
                                     }}
                                 />
                             );
@@ -102,7 +239,7 @@ const HomeBottomTabNavigator = () => {
                                     color={ tabInfo.color }
                                     size={ tabInfo.size }
                                     style={{
-                                        marginTop: 5,
+                                        marginTop: 10,
                                     }}
                                 />
                             );
@@ -121,7 +258,7 @@ const HomeBottomTabNavigator = () => {
                                     color={ tabInfo.color }
                                     size={ tabInfo.size }
                                     style={{
-                                        marginTop: 5,
+                                        marginTop: 10,
                                     }}
                                 />
                             );
