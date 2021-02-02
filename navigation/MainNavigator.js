@@ -1,6 +1,6 @@
 // Standard
 import React from 'react';
-import { Text, Platform, Image, Pressable, Dimensions } from 'react-native';
+import { Platform, Image, Pressable, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
