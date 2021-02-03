@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Styles from '../constants/Styles';
+import Colors from '../constants/Colors';
 
 const FreeMarketScreen = props => {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={ Styles.container }>
             <Text>
                 FreeMarket Screen!
             </Text>

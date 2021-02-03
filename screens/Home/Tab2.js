@@ -1,11 +1,16 @@
+// Standard
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// Custom
+import Styles from '../../constants/Styles';
+import Colors from '../../constants/Colors';
+
 const Tab2Screen = props => {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={ Styles.container }>
             <Text>
-                Tab2 Screen!
+                富士見野市ページ
             </Text>
         </View>
     );

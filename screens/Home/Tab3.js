@@ -1,11 +1,16 @@
+// Standard
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+// Custom
+import Styles from '../../constants/Styles';
+import Colors from '../../constants/Colors';
+
 const Tab3Screen = props => {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <View style={ Styles.container }>
             <Text>
-                Tab3 Screen!
+                富士見市ページ
             </Text>
         </View>
     );
