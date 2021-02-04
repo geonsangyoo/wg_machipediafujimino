@@ -13,11 +13,13 @@
 
 // Custom
 import newsReducer from './store/reducers/news';
+import weatherReducer from './store/reducers/weather';
 import HomeBottomTabNavigator from './navigation/MainNavigator';
 
 // Redux
 const rootReducer = combineReducers({
-  news: newsReducer
+  news: newsReducer,
+  weather: weatherReducer
 });
 const middlewareEnhancer = applyMiddleware(ReduxThunk);
 const store = createStore(rootReducer, composeWithDevTools(middlewareEnhancer));
