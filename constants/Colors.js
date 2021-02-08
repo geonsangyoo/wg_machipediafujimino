@@ -9,4 +9,6 @@ export default {
     noAccentColor: '#74777A',
     headerIconColor: '#74777A',
     borderColor: '#F2F2F2',
+    highTempColor: '#FF2F00',
+    lowTempColor: '#1152E2',
 };

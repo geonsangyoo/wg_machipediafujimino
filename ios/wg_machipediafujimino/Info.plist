@@ -72,6 +72,9 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>NotoSansJP-Bold.otf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>To scan QR Codes</string>
 </dict>
 </plist>
