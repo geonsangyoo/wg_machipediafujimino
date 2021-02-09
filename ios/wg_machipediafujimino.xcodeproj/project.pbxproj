@@ -24,6 +24,7 @@
 		CC779FB9F60762CE24438C99 /* libPods-wg_machipediafujimino-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D690C94847148AF704582B /* libPods-wg_machipediafujimino-tvOS.a */; };
 		D187B77F80384E358949D1CE /* freeMarketLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1B0F8CAD0A42F797368A0D /* freeMarketLogo.png */; };
 		D2C3002925E7037F9C25449A /* libPods-wg_machipediafujimino.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A8531F14D0D2725A171399C /* libPods-wg_machipediafujimino.a */; };
+		A8D0AD640FA343D1A47C34C8 /* fujimishiLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B4CA2086DE43E5B77FA00B /* fujimishiLogo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F731D5FEFF587D463AE33159 /* libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wg_machipediafujimino-wg_machipediafujiminoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7811324E14F4EE188473EA0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		64B4CA2086DE43E5B77FA00B /* fujimishiLogo.png */ = {isa = PBXFileReference; name = "fujimishiLogo.png"; path = "../assets/images/fujimishiLogo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				A4B373654A6D490390096E1A /* headerLogo.png */,
 				6E1B0F8CAD0A42F797368A0D /* freeMarketLogo.png */,
 				A69BB7EAA4EA41B4BFA9B6EC /* NotoSansJP-Bold.otf */,
+				64B4CA2086DE43E5B77FA00B /* fujimishiLogo.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				4B0F9F36753A4469B9532F52 /* headerLogo.png in Resources */,
 				D187B77F80384E358949D1CE /* freeMarketLogo.png in Resources */,
 				5BAF81B5A65F40FCA397B02F /* NotoSansJP-Bold.otf in Resources */,
+				A8D0AD640FA343D1A47C34C8 /* fujimishiLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,7 +40,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>To scan QR Codes</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>meiryoUI.ttf</string>
