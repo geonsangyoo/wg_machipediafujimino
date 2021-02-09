@@ -92,9 +92,6 @@ const PointScreen = props => {
                 (
                     <RNCamera
                         ref={ref => {
-                            // await ref.recordAsync({
-                            //     mute: true
-                            // });
                             setCameraSetting(ref);
                         }}
                         style={{

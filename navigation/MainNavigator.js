@@ -12,6 +12,7 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 import HomeScreen from '../screens/HomeScreen';
 import FreeMarketScreen from '../screens/FreeMarketScreen';
 import * as weatherActions from '../store/actions/weather';
+import * as newsActions from '../store/actions/news';
 import PointScreen from '../screens/PointScreen';
 import Colors from '../constants/Colors';
 
@@ -209,6 +210,7 @@ const HomeBottomTabNavigator = () => {
 
     useEffect(() => {
         dispatch(weatherActions.fetchWeather());
+        dispatch(newsActions.fetchNews());
     }, [dispatch]);
 
     return (

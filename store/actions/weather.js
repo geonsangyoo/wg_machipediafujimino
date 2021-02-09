@@ -1,23 +1,10 @@
 // Custom
+import ScrapingHelpers from '../../helpers/ScrapingHelpers';
+
 export const FETCH_WEATHER = "FETCH_WEATHER";
 export const fetchWeather = () => {
 
     const weatherFetchURL = "https://tenki.jp/forecast/3/14/4310/11235/";
-
-    const getTagAttribute = (html, tagName, attribute) => {
-        let startIndex = html.indexOf(`<${tagName}`);
-        let attributeStartIndex = html.indexOf(`${attribute}=`, startIndex) + String(attribute).length + 1;
-        let attributeLastIndex = html.indexOf("\"", attributeStartIndex + 1);
-
-        return html.slice(attributeStartIndex + 1, attributeLastIndex);
-    };
-    const getTagValue = (html, tagName, startClassName, className) => {
-        let startIndex = html.indexOf(`<${tagName}`, html.indexOf(startClassName));
-        let classStartIndex = html.indexOf(`class="${className}">`, startIndex) + String(className).length + 9;
-        let classLastIndex = html.indexOf("<", classStartIndex + 1);
-
-        return html.slice(classStartIndex, classLastIndex);
-    };
 
     return async dispatch => {
         /**
@@ -59,18 +46,18 @@ export const fetchWeather = () => {
                     /**
                      * today
                      */
-                    weather.today.imgUrl = getTagAttribute(today, "img", "src");
-                    weather.today.title = getTagAttribute(today, "img", "title");
-                    weather.today.highTmp = getTagValue(today, "span", "high-temp", "value");
-                    weather.today.lowTmp = getTagValue(today, "span", "low-temp", "value");
+                    weather.today.imgUrl = ScrapingHelpers.getTagAttribute(today, "img", "src");
+                    weather.today.title = ScrapingHelpers.getTagAttribute(today, "img", "title");
+                    weather.today.highTmp = ScrapingHelpers.getTagValue(today, "span", "high-temp", "value");
+                    weather.today.lowTmp = ScrapingHelpers.getTagValue(today, "span", "low-temp", "value");
 
                     /**
                      * tomorrow
                      */
-                    weather.tomorrow.imgUrl = getTagAttribute(tomorrow, "img", "src");
-                    weather.tomorrow.title = getTagAttribute(tomorrow, "img", "title");
-                    weather.tomorrow.highTmp = getTagValue(tomorrow, "span", "high-temp", "value");
-                    weather.tomorrow.lowTmp = getTagValue(tomorrow, "span", "low-temp", "value");
+                    weather.tomorrow.imgUrl = ScrapingHelpers.getTagAttribute(tomorrow, "img", "src");
+                    weather.tomorrow.title = ScrapingHelpers.getTagAttribute(tomorrow, "img", "title");
+                    weather.tomorrow.highTmp = ScrapingHelpers.getTagValue(tomorrow, "span", "high-temp", "value");
+                    weather.tomorrow.lowTmp = ScrapingHelpers.getTagValue(tomorrow, "span", "low-temp", "value");
                     
                 }, (err) => {
                     console.log("HTML fetch error", error);
