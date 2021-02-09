@@ -242,8 +242,7 @@ const styles = StyleSheet.create({
     },
     weatherWidget: {
         width: Dimensions.get("window").width / 2,
-        height: '100%',
-        marginTop: 10,
+        paddingTop: 10,
         borderRightWidth: 1,
         borderRightColor: Colors.borderColor,
     },
