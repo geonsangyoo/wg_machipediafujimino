@@ -92,6 +92,9 @@ const PointScreen = props => {
                 (
                     <RNCamera
                         ref={ref => {
+                            // await ref.recordAsync({
+                            //     mute: true
+                            // });
                             setCameraSetting(ref);
                         }}
                         style={{
@@ -135,16 +138,38 @@ const PointScreen = props => {
                                 </TouchableOpacity>
                             </View>
                         )}
-                        onBarCodeRead={({ scanResult }) => {
+                        onBarCodeRead={({ data, type }) => {
                             if (!isScanned) {
-                                if (scanResult.data) {
+                                if (type === RNCamera.Constants.BarCodeType.qr) {
                                     setIsScanned(true);
-                                    Linking.canOpenURL(scanResult.data)
+                                    Linking.canOpenURL(data)
                                         .then(supported => {
                                             if (supported) {
-                                                Linking.openURL(scanResult.data);
-                                                setIsScanned(false);
-                                                setIsClicked(false);
+                                                Alert.alert(
+                                                    "確認",
+                                                    `読み取ったアドレスにアクセスしますか？\n(${ data })`,
+                                                    [
+                                                        {
+                                                            text: 'はい',
+                                                            style: 'default',
+                                                            onPress: () => {
+                                                                setIsScanned(false);
+                                                                setIsClicked(false);
+                                                                Linking.openURL(data);
+                                                            }
+                                                        },
+                                                        {
+                                                            text: 'いいえ',
+                                                            style: 'cancel',
+                                                            onPress: () => {
+                                                                setIsScanned(false);
+                                                            }
+                                                        }
+                                                    ],
+                                                    {
+                                                        cancelable: false
+                                                    }
+                                                );
                                             } else {
                                                 Alert.alert(
                                                     "警告",
@@ -166,41 +191,58 @@ const PointScreen = props => {
                                             }
                                         })
                                 }
-                            } else {
-                                return null;
                             }
                         }}
-                        permissionDialogTitle={ "カメラ機能権限要請" }
-                        permissionDialogMessage={ "カメラ機能の承認が必要になります" }
+                        captureAudio={ false }
+                        androidCameraPermissionOptions={{
+                            title: "カメラ機能権限要請",
+                            message: "カメラ機能の承認が必要になります",
+                            buttonPositive: 'Ok',
+                            buttonNegative: 'Cancel',
+                        }}
+                        androidRecordAudioPermissionOptions={{
+                            title: "オーディオ機能権限要請",
+                            message: 'オーディオ機能の承認が必要になります',
+                            buttonPositive: 'Ok',
+                            buttonNegative: 'Cancel',
+                        }}
                         flashMode={ RNCamera.Constants.FlashMode.auto }
                         type={ RNCamera.Constants.Type.back }
                     >
+                        <View style={{ marginTop: 10, marginLeft: 10, alignItems: 'flex-start' }}>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    setIsClicked(false);
+                                }}
+                            >
+                                <View>
+                                    <Icon
+                                        name="close-circle-outline"
+                                        style={{
+                                            color: Colors.defaultBackgroundColor
+                                        }}
+                                        size={ 30 }
+                                    />
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </RNCamera>
                 ) : ( isFocused ?
-                    <View style={{ ...Styles.container, justifyContent: 'flex-start' }}>
-                        <Pressable
-                            onPress={() => {
-                                setIsClicked(true);
-                            }}
-                        >
+                    <View style={ Styles.container }>
+                        <Pressable>
                             <Icon
                                 name="qrcode-scan"
-                                size={ 150 }
-                                style={{
-                                    marginTop: 100,
-                                }}
+                                size={ 100 }
                             />
                         </Pressable>
                         <TouchableOpacity
                             onPress={() => {
-                                /**
-                                 * To-Do
-                                 */
+                                setIsClicked(true);
                             }}
                         >
                             <View style={ styles.cardContainerStyle }>
                                 <Text style={ styles.cardTextStyle }>
-                                    カード一覧
+                                    スキャン
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -287,19 +329,19 @@ const styles = StyleSheet.create({
         color: Colors.noAccentColor,
     },
     cardContainerStyle: {
-        marginTop: 35,
-        width: 150,
+        marginTop: 20,
+        width: 100,
         height: 35,
-        borderRadius: 25,
-        borderColor: Colors.accentColorTab1,
-        borderWidth: 2,
+        borderRadius: 10,
+        borderColor: Colors.noAccentColor,
+        borderWidth: 1,
     },
     cardTextStyle: {
-        marginTop: 0,
-        fontFamily: 'Noto Sans JP',
-        fontSize: 20,
+        marginTop: 3,
+        fontFamily: 'meiryoUI',
+        fontSize: 18,
         alignSelf: 'center',
-        color: Colors.accentColorTab1,
+        color: Colors.noAccentColor,
     },
 });
 
