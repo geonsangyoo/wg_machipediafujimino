@@ -1,6 +1,7 @@
 // Standard
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Platform, Image, Pressable, Dimensions } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,6 +11,7 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 // Custom
 import HomeScreen from '../screens/HomeScreen';
 import FreeMarketScreen from '../screens/FreeMarketScreen';
+import * as weatherActions from '../store/actions/weather';
 import PointScreen from '../screens/PointScreen';
 import Colors from '../constants/Colors';
 
@@ -202,6 +204,13 @@ const pointNavigator = () => {
 };
 
 const HomeBottomTabNavigator = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(weatherActions.fetchWeather());
+    }, [dispatch]);
+
     return (
         <NavigationContainer>
             <menuTabNavigator.Navigator

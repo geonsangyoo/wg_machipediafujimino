@@ -1,31 +1,90 @@
 // Standard
 import React from 'react';
-import { StyleSheet, View, Text, Dimensions, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useSelector } from 'react-redux';
 
 // Custom
 import Tab1Screen from './Home/Tab1';
 import Tab2Screen from './Home/Tab2';
 import Tab3Screen from './Home/Tab3';
 import Tab4Screen from './Home/Tab4';
+import DateHelpers from '../helpers/DateHelpers';
 import Colors from '../constants/Colors';
 
-const TabBar = ({ state, descriptors, navigation, position }) => {
+const TabBar = ({ state, descriptors, navigation }) => {
+
+    const weather = useSelector(states => states.weather.weather);
     const indexBackgroundColors = [
         Colors.accentColorTab1,
         Colors.accentColorTab2,
         Colors.accentColorTab3,
         Colors.accentColorTab4
     ];
+
     return (
         <SafeAreaView>
             <View style={{
                 ...styles.container, ...styles.weatherHeaderContainer }}>
                 <View style={ styles.weatherWidget }>
-                    <Text style={ styles.weatherContent }>今日</Text>
+                    <Text style={ styles.weatherContent }>{ DateHelpers.getTodayString() }</Text>
+                    { weather.today !== undefined ?
+                        <View style={ styles.weatherDetail }>
+                            <Image
+                                source={{ uri: weather.today.imgUrl }}
+                                style={ styles.weatherImg }
+                            />
+                            <Text style={ styles.weatherTextStyle }>
+                                { weather.today.title }
+                            </Text>
+                            <Text style={ styles.highTempTextStyle }>
+                                { weather.today.highTmp }
+                            </Text>
+                            <Text style={ styles.hightempUpperStyle }>
+                                ℃
+                            </Text>
+                            <Text style={ styles.tempSlashStyle }>
+                                /
+                            </Text>
+                            <Text style={ styles.lowTempTextStyle }>
+                                { weather.today.lowTmp }
+                            </Text>
+                            <Text style={ styles.lowtempUpperStyle }>
+                                ℃
+                            </Text>
+                        </View>
+                        : null
+                    }
                 </View>
                 <View style={ styles.weatherWidget }>
-                    <Text style={ styles.weatherContent }>明日</Text>
+                    <Text style={ styles.weatherContent }>{ DateHelpers.getTomorrowString() }</Text>
+                    { weather.tomorrow !== undefined ?
+                        <View style={ styles.weatherDetail }>
+                        <Image
+                            source={{ uri: weather.tomorrow.imgUrl }}
+                            style={ styles.weatherImg }
+                        />
+                        <Text style={ styles.weatherTextStyle }>
+                            { weather.tomorrow.title }
+                        </Text>
+                        <Text style={ styles.highTempTextStyle }>
+                            { weather.tomorrow.highTmp }
+                        </Text>
+                        <Text style={ styles.hightempUpperStyle }>
+                            ℃
+                        </Text>
+                        <Text style={ styles.tempSlashStyle }>
+                            /
+                        </Text>
+                        <Text style={ styles.lowTempTextStyle }>
+                            { weather.tomorrow.lowTmp }
+                        </Text>
+                        <Text style={ styles.lowtempUpperStyle }>
+                            ℃
+                        </Text>
+                    </View>
+                        : null
+                    }
                 </View>
             </View>
             <View style={{
@@ -107,8 +166,7 @@ const TabBar = ({ state, descriptors, navigation, position }) => {
                                     height: '100%',
                                 }}>
                                     <Text style={{
-                                        fontFamily: 'meiryoUI',
-                                        fontWeight: 'bold',
+                                        fontFamily: 'Noto Sans JP',
                                         fontSize: 12,
                                         color: isFocused ? Colors.defaultBackgroundColor : Colors.noAccentColor,
                                     }}>
@@ -162,7 +220,7 @@ const HomeScreen = () => {
                 name="Tab4"
                 component={ Tab4Screen }
                 options={{
-                    title: "さいたま県ニュース"
+                    title: "埼玉県ニュース"
                 }}
             />
         </Tab.Navigator>
@@ -184,13 +242,67 @@ const styles = StyleSheet.create({
     },
     weatherWidget: {
         width: Dimensions.get("window").width / 2,
-        flex: 1,
-        justifyContent: 'center',
+        height: '100%',
+        marginTop: 10,
         borderRightWidth: 1,
         borderRightColor: Colors.borderColor,
     },
     weatherContent: {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'meiryoUI',
+        fontWeight: 'bold',
+        fontSize: 12,
+        color: Colors.noAccentColor,
+    },
+    weatherDetail: {
+        flexDirection: 'row',
+    },
+    weatherImg: {
+        marginLeft: 15,
+        marginTop: 3,
+        width: 34,
+        height: 36,
+        backgroundColor: 'transparent'
+    },
+    weatherTextStyle: {
+        marginTop: 10,
+        marginLeft: 10,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 14,
+        color: Colors.noAccentColor,
+    },
+    highTempTextStyle: {
+        marginTop: 0,
+        marginLeft: 20,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 23,
+        color: Colors.highTempColor,
+    },
+    lowTempTextStyle: {
+        marginTop: 7,
+        marginLeft: 5,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 18,
+        color: Colors.lowTempColor,
+    },
+    hightempUpperStyle: {
+        marginTop: 7,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 10,
+        color: Colors.noAccentColor,
+    },
+    lowtempUpperStyle: {
+        marginTop: 10,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 10,
+        color: Colors.noAccentColor,
+    },
+    tempSlashStyle: {
+        marginTop: 8,
+        marginLeft: 5,
+        fontFamily: 'Noto Sans JP',
+        fontSize: 15,
+        color: Colors.noAccentColor,
     },
 });
 
